@@ -1087,6 +1087,13 @@ Best pinouts for production vary per application.  Please contact Wurth Electron
 <wire x1="-63.5" y1="68.58" x2="-25.4" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="T1" gate="G$1" pin="4"/>
+<pinref part="T1" gate="G$1" pin="5"/>
+<wire x1="-25.4" y1="66.04" x2="-25.4" y2="63.5" width="0.1524" layer="91"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>

@@ -1014,6 +1014,63 @@ Best pinouts for production vary per application.  Please contact Wurth Electron
 </deviceset>
 </devicesets>
 </library>
+<library name="My_library">
+<packages>
+<package name="BNC_SOCKET">
+<description>BNC connector 90 degree
+RS 782-5590</description>
+<pad name="P$1" x="0" y="0" drill="2"/>
+<pad name="P$2" x="0" y="6.6" drill="2"/>
+<pad name="P$3" x="6.6" y="6.6" drill="2"/>
+<pad name="P$4" x="6.6" y="0" drill="2"/>
+<pad name="P$SIGNAL" x="3.3" y="3.3" drill="1.2"/>
+<wire x1="-2" y1="-2" x2="-2" y2="10" width="0.127" layer="21"/>
+<wire x1="-2" y1="10" x2="8.6" y2="10" width="0.127" layer="21"/>
+<wire x1="8.6" y1="10" x2="8.6" y2="-2" width="0.127" layer="21"/>
+<wire x1="8.6" y1="-2" x2="-2" y2="-2" width="0.127" layer="21"/>
+<wire x1="-3" y1="10" x2="-3" y2="27" width="0.127" layer="21"/>
+<wire x1="-3" y1="27" x2="9.5" y2="27" width="0.127" layer="21"/>
+<wire x1="9.5" y1="27" x2="9.5" y2="10" width="0.127" layer="21"/>
+<wire x1="9.5" y1="10" x2="-3" y2="10" width="0.127" layer="21"/>
+<text x="-1.1" y="24" size="1.27" layer="21">BNC socket</text>
+</package>
+</packages>
+<symbols>
+<symbol name="BU-BNC">
+<wire x1="-2.54" y1="2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94" curve="-180" cap="flat"/>
+<wire x1="0" y1="-2.54" x2="-0.762" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-0.508" y2="0" width="0.1524" layer="94"/>
+<wire x1="-2.54" y1="0.254" x2="-0.762" y2="0.254" width="0.254" layer="94"/>
+<wire x1="-0.762" y1="0.254" x2="-0.508" y2="0" width="0.254" layer="94"/>
+<wire x1="-0.508" y1="0" x2="-0.762" y2="-0.254" width="0.254" layer="94"/>
+<wire x1="-0.762" y1="-0.254" x2="-2.54" y2="-0.254" width="0.254" layer="94"/>
+<text x="-2.54" y="-5.08" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-2.54" y="3.302" size="1.778" layer="95">&gt;NAME</text>
+<pin name="1" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+<pin name="2" x="2.54" y="-2.54" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="BNC_SOCKET">
+<description>BNC socket
+RS 782-5590</description>
+<gates>
+<gate name="G$1" symbol="BU-BNC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="BNC_SOCKET">
+<connects>
+<connect gate="G$1" pin="1" pad="P$SIGNAL"/>
+<connect gate="G$1" pin="2" pad="P$1 P$2 P$3 P$4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1028,6 +1085,10 @@ Best pinouts for production vary per application.  Please contact Wurth Electron
 <part name="SUPPLY6" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="DGND" device=""/>
 <part name="T1" library="wurth_electronics_midcom_inc_v1-0" deviceset="74990110013" device=""/>
 <part name="SUPPLY3" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="DGND" device=""/>
+<part name="BNC_TTL" library="My_library" deviceset="BNC_SOCKET" device=""/>
+<part name="BNC_POWER" library="My_library" deviceset="BNC_SOCKET" device=""/>
+<part name="SUPPLY1" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="DGND" device=""/>
+<part name="SUPPLY2" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="DGND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1048,6 +1109,18 @@ Best pinouts for production vary per application.  Please contact Wurth Electron
 <instance part="SUPPLY3" gate="G$1" x="-48.26" y="60.96" smashed="yes" rot="R270">
 <attribute name="VALUE" x="-51.435" y="63.627" size="1.778" layer="96" rot="R270"/>
 </instance>
+<instance part="BNC_TTL" gate="G$1" x="-66.04" y="38.1" smashed="yes">
+<attribute name="VALUE" x="-68.58" y="33.02" size="1.778" layer="96"/>
+</instance>
+<instance part="BNC_POWER" gate="G$1" x="-66.04" y="22.86" smashed="yes">
+<attribute name="VALUE" x="-68.58" y="17.78" size="1.778" layer="96"/>
+</instance>
+<instance part="SUPPLY1" gate="G$1" x="-48.26" y="30.48" smashed="yes" rot="R90">
+<attribute name="VALUE" x="-45.085" y="27.813" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY2" gate="G$1" x="-48.26" y="15.24" smashed="yes" rot="R90">
+<attribute name="VALUE" x="-45.085" y="12.573" size="1.778" layer="96" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -1064,16 +1137,33 @@ Best pinouts for production vary per application.  Please contact Wurth Electron
 <pinref part="T1" gate="G$1" pin="6"/>
 <wire x1="-45.72" y1="60.96" x2="-25.4" y2="60.96" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="BNC_TTL" gate="G$1" pin="2"/>
+<pinref part="SUPPLY1" gate="G$1" pin="DGND"/>
+<wire x1="-63.5" y1="35.56" x2="-63.5" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="-63.5" y1="30.48" x2="-50.8" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="BNC_POWER" gate="G$1" pin="2"/>
+<pinref part="SUPPLY2" gate="G$1" pin="DGND"/>
+<wire x1="-63.5" y1="20.32" x2="-63.5" y2="15.24" width="0.1524" layer="91"/>
+<wire x1="-63.5" y1="15.24" x2="-50.8" y2="15.24" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$1" class="0">
 <segment>
 <pinref part="B1" gate="G$1" pin="*D5"/>
 <wire x1="-5.08" y1="22.86" x2="2.54" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="2.54" y1="22.86" x2="2.54" y2="50.8" width="0.1524" layer="91"/>
-<wire x1="2.54" y1="50.8" x2="-60.96" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="2.54" y1="50.8" x2="-45.72" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="50.8" x2="-60.96" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="-60.96" y1="50.8" x2="-60.96" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G$1" pin="2"/>
 <wire x1="-60.96" y1="71.12" x2="-25.4" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="50.8" x2="-45.72" y2="38.1" width="0.1524" layer="91"/>
+<junction x="-45.72" y="50.8"/>
+<pinref part="BNC_TTL" gate="G$1" pin="1"/>
+<wire x1="-45.72" y1="38.1" x2="-63.5" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -1081,10 +1171,15 @@ Best pinouts for production vary per application.  Please contact Wurth Electron
 <pinref part="B1" gate="G$1" pin="*D3"/>
 <wire x1="-5.08" y1="27.94" x2="0" y2="27.94" width="0.1524" layer="91"/>
 <wire x1="0" y1="27.94" x2="0" y2="48.26" width="0.1524" layer="91"/>
-<wire x1="0" y1="48.26" x2="-63.5" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="0" y1="48.26" x2="-40.64" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="-40.64" y1="48.26" x2="-63.5" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="-63.5" y1="48.26" x2="-63.5" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G$1" pin="3"/>
 <wire x1="-63.5" y1="68.58" x2="-25.4" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="BNC_POWER" gate="G$1" pin="1"/>
+<wire x1="-40.64" y1="48.26" x2="-40.64" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="-40.64" y1="22.86" x2="-63.5" y2="22.86" width="0.1524" layer="91"/>
+<junction x="-40.64" y="48.26"/>
 </segment>
 </net>
 <net name="N$3" class="0">

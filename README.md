@@ -1,5 +1,8 @@
 # laserController
-Repository to describe how to control a laser using a python script and an Arduino Uno
+
+This repository describes our setup used to perform optogenetic stimulation in behavioral experiments. 
+
+The laser pulses are controlled using a Python script and a TTL signal delivered from an Arduino Uno.
 
 ## Material needed
 

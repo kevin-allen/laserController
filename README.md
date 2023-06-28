@@ -55,7 +55,7 @@ The former (`laser_controller__pulse50dutycycle.old`) sketch only had fixed 50% 
 - $t_\mathrm{off}$: pulse len off duration
 - $T=t_\mathrm{on}+t_\mathrm{off}$: period duration
 - $f=\frac{1}{T}$: frequency
-- $d = \frac{t_\mathrm{on}}/{T}$: duty cycle ( $0 < d \leq 1$ ), <sup><sub>The case `d=1` is treated individually and handled without timers.</sub></sup>
+- $d = \frac{t_\mathrm{on}}{T}$: duty cycle ( $0 < d \leq 1$ ), <sup><sub>The case `d=1` is treated individually and handled without timers.</sub></sup>
 
 example ( [paper](https://pubmed.ncbi.nlm.nih.gov/35584671/) ):
 "stimulation at 10 Hz with a 5 ms duration "

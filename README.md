@@ -61,4 +61,4 @@ example ( [paper](https://pubmed.ncbi.nlm.nih.gov/35584671/) ):
 "stimulation at 10 Hz with a 5 ms duration "
 - $f=10\mathrm{Hz},\ T=100\mathrm{ms},\ t_\mathrm{on}=5\mathrm{ms},\ d=0.05$  (this example is acheived by above ros command)
 
-
+Nota bene: The effective power (measured on average) will scale $\propto d$ as this is the raio of on duration.

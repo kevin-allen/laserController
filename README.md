@@ -28,4 +28,34 @@ Ethernet socket:
 * pin 4 & 5: connect together, apply HIGH for ON, apply LOW for OFF, don't apply any voltage there: key will turn on/off
 * pin 6: ground
 
+# Laser controller ROS
+
+These *topics* are subscribed to by the Arduino connected to the Laser controller.
+
+ *   `laser_enable`: bool enabled/disabled
+ *   `laser_power`: byte 0-255 relative power of max power set on controller
+ *   `laser_pulselen_on`: pulse length [ms] = 1/(2*frequency),  
+       duty cycle on [ms] = laser_pulselen_on / (laser_pulselen_on + laser_pulselen_off)
+ *   `laser_pulselen_off`: pulse off time [ms], set 0 for constant on
+
+# Usage example
+ You can
+ - use the example file `python_ros_example/control_laser.py` and set the power, pulse_len and duty_cycle , or
+ - use rostopic to publish , see description like in `sketches/laser_controller_ros/laser_controller_ros.ino`
+     *   enable: `rostopic pub -1 /laser_enable std_msgs/Bool 1`
+     *   set power: `rostopic pub -1 /laser_power std_msgs/UInt8 200`
+     *   set pulse len on duration: `rostopic pub -1 /laser_pulselen_on std_msgs/UInt32 5`
+     *   set pulse len off duration: `rostopic pub -1 /laser_pulselen_off std_msgs/UInt32 95`
+
+# pulse length, frequency and duty cycle
+- $t_\mathrm{on}$: pulse len on
+- $t_\mathrm{off}$: pulse len off
+- $T=t_\mathrm{on}+t_\mathrm{off}$: period duration
+- $f=\frac{1}{T}$: frequency
+- $d = t_\mathrm{on}/T$: duty cycle ( $0 < d \leq 1$ )
+
+example ( [paper](https://pubmed.ncbi.nlm.nih.gov/35584671/) ):
+"stimulation at 10 Hz with a 5 ms duration "
+- $f=10\mathrm{Hz},\ T=100\mathrm{ms},\ t_\mathrm{on}=5\mathrm{ms},\ d=0.05$  (this example is acheived by above ros command)
+
 

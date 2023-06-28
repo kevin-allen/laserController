@@ -38,6 +38,9 @@ These *topics* are subscribed to by the Arduino connected to the Laser controlle
        duty cycle on [ms] = laser_pulselen_on / (laser_pulselen_on + laser_pulselen_off)
  *   `laser_pulselen_off`: pulse off time [ms], set 0 for constant on
 
+The former (`laser_controller__pulse50dutycycle.old`) sketch only had fixed 50% duty cycle and `laser_pulselen` as corresponding ros topic.
+
+
 # Usage example
  You can
  - use the example file `python_ros_example/control_laser.py` and set the power, pulse_len and duty_cycle , or
@@ -48,11 +51,11 @@ These *topics* are subscribed to by the Arduino connected to the Laser controlle
      *   set pulse len off duration: `rostopic pub -1 /laser_pulselen_off std_msgs/UInt32 95`
 
 # pulse length, frequency and duty cycle
-- $t_\mathrm{on}$: pulse len on
-- $t_\mathrm{off}$: pulse len off
+- $t_\mathrm{on}$: pulse len on duration
+- $t_\mathrm{off}$: pulse len off duration
 - $T=t_\mathrm{on}+t_\mathrm{off}$: period duration
 - $f=\frac{1}{T}$: frequency
-- $d = t_\mathrm{on}/T$: duty cycle ( $0 < d \leq 1$ )
+- $d = \frac{t_\mathrm{on}}/{T}$: duty cycle ( $0 < d \leq 1$ ), <sup><sub>The case `d=1` is treated individually and handled without timers.</sub></sup>
 
 example ( [paper](https://pubmed.ncbi.nlm.nih.gov/35584671/) ):
 "stimulation at 10 Hz with a 5 ms duration "
